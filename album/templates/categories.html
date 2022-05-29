@@ -6,33 +6,34 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.7.0/simple-lightbox.css" integrity="sha512-8WAX0xL/cHZ38RXoX2gtuqkAwmDVAzGwoFVmHvn46IDHGWOjTHx0vcl9OapNrfOzpFtql0SNkv+0y0b5Fm8ZkA==" crossorigin="anonymous" />
+
 
 <body>
     <div class="container-fluid">
         {% for category in categories %}
         <div class="row">
-            <div class="container-fluid" style="display: flex;
-            flex-wrap: wrap;">
+            <!-- <div class="container-fluid" style="display: flex;
+            flex-wrap: wrap;"> -->
+            <div class="container-fluid" style="display: flex;grid: auto; grid-gap: 0px;"
+            >
+
                     {% for image in images %}
                     {% if category.name == image.category.name %}
                     
                     <!-- <div class="col-md-2">
                         </div> -->
-                        <div  >
-                <h1 style="color: #fff;">{{image.category.name}}</h1>
+                        <div >
+                <!-- <h1 style="color: #fff;">{{image.category.name}}</h1> -->
 
                                 <div class="col-sm-6 col-md-8" id="polaroid" >
-                                        <img src="{{image.image.url}}" class="img-fluid" id="gallery" class="btn"
+                                        <img src="{{image.image.url}}" class="img-fluid" class="img-responsive" id="gallery" class="btn"
                                         data-target="#{{image.id}}" data-toggle="modal">
-                                    <div class="row" style="padding-top:1%;">
-                                        <div class="col-md-9">
-                                            <h2 style="text-align: center;">{{image.name}}</h2>
-                                        </div>
-                                        <div class="col-md-2">
+                                        <div class="bottom-right">
+                                            <h2 style="color: white;" style="text-align: center;">{{image.name}}</h2>
                                             <button class="btn" onclick="copyToClipboard('127.0.0.1:8000{{image.image.url}}')">copy
                                                 link</button>
-                                        </div>
+                                      
                                     </div>
                                 </div>
                             </div>
@@ -71,6 +72,7 @@
                 document.execCommand('copy');
                 document.body.removeChild(el);
             };
+            var gallery = new SimpleLightbox('#polaroid img');
         </script>
 
 <style>
@@ -79,19 +81,33 @@
             overflow-x: hidden;
         }
 
-        .img-fluid {
-            height: 350px;
-            /* width: 100%; */
-        }
+       
 
         #polaroid {
-            padding-top: 1%;
+            /* padding-top: 1%;
             margin: 1%;
-            background-color: #f2f4f7;
-            border: solid 1px grey;
+            border: solid 1px grey; */
+            display: flex; 
         }
+        #polaroid img{
+            object-position: center;
+            object-fit: cover;
+            height: 300px;
+            width: 2500rem;
+            display: inline-block;
+        }
+        .bottom-right {
+            position: absolute;
+            bottom: 8px;
+            right: 16px;
+}
+
         
     </style>
+
+<!-- Place at the bottom of the body tag -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/2.7.0/simple-lightbox.min.js" integrity="sha512-ZajFBgnksNp8Rj+AbmYe8ueOu45HiSjtf3QpqnRbHlq719m6VK0FkbYIqQ8wEnlVuJ1i9pC+z6Z9ewmDnUTMCg==" crossorigin="anonymous"></script>
+</head>
 
 </body>
 
