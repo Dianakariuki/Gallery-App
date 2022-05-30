@@ -42,7 +42,7 @@ or
 it on your own repository.
 
  Navigate into the cloned project. 
-`cd albumarena`
+`cd Gallery-app`
 
 
 * Create and activate the vitual Environment and install the from requirements.txt
