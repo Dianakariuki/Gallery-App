@@ -1,10 +1,10 @@
 # Gallery-App
 
 ### HomePage
-![Diana](/static/images/screenshot2.png)
+![Diana](/static/images/sereenshot2.png)
 
 ### ImageView
-![Diana](/static/images/screen3.png)
+![Diana](/static/images/sreen3.png)
 
 ### GalleryPage
 ![Diana](/static/images/screenshot1.png)
