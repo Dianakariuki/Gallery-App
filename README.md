@@ -1,6 +1,14 @@
 # Gallery-App
 
-## A Description of the WebApplication.
+### HomePage
+![Diana](/static/images/screenshot2.png)
+
+### ImageView
+![Diana](/static/images/screen3.png)
+
+### GalleryPage
+![Diana](/static/images/screenshot1.png)
+
 
 ## Table of Content
 
