@@ -149,7 +149,7 @@ SOFTWARE.
 
 Gmail - [dianakariuki842@gmail.com]()
 
-Github - [NOBELLA EJIOFOR](https://github.com/Dianakariuki)
+Github - [Dianakariuki](https://github.com/Dianakariuki)
 
 ## Live Link
 
