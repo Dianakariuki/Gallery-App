@@ -20,7 +20,7 @@
                                 <div class="col-md-9">
                                     <h2 style="text-align: center;">{{image.name}}</h2>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-2" id="bottom-right">
                                     <button class="btn" onclick="copyToClipboard('127.0.0.1:8000{{image.image.url}}')">copy
                                         link</button>
                                 </div>
@@ -48,7 +48,14 @@
                     {% endfor %}
             </div>
         </div>
+<style>
+  #bottom-right {
+            position: absolute;
+            bottom: 8px;
+            right: 16px;
+        }
 
+</style>
         <script>
                 function copyToClipboard (str) {
                     const el = document.createElement('textarea');
