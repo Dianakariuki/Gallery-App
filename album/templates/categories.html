@@ -10,25 +10,56 @@
 
 
 <body>
-    <div class="container-fluid">
+    <!-- <div class="container-fluid"> -->
         {% for category in categories %}
-        <div class="row">
+        <!-- <div class="row"> -->
             <!-- <div class="container-fluid" style="display: flex;
             flex-wrap: wrap;"> -->
-            <div class="container-fluid" style="display: flex;grid: auto; grid-gap: 0px;"
-            >
+            <!-- <div class="container-fluid" style="display: flex;grid: auto; grid-gap: 0px;"
+            > -->
+            <div class="row row-cols-1 row-cols-md-3 g-4"id="polaroid" >
+                {% for image in images %}
+                <img src="{{image.image.url}}" class="img-responsive" alt="Image" height="300vh" id="gallery" data-bs-toggle="modal" data-bs-target="#exampleModal{{image.id}}">
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal{{image.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">{{image.image_name}}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body text-light" >
+                                 
+                                    <p>NAME: {{image.name}}</p>
+                                    <p>DESCRIPTION: {{image.description}}</p>
+                                    <p>CATEGORY: {{image.category.name}}</p>
+                                    <p>UPLOADED: {{image.upload_date}}</p>
+                                
+                                <img src="{{image.image.url}}" class="img-responsive" alt="Image" height="300vh" width="100%">
+                            </div>
+                            <div class="modal-footer">
+                                <input type="text" id="image_link" value="{{image.image.url}}" class="btn btn-outline-primary form-control">
+                                <button onclick="myFunction()">Copy Link</button>
+                                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                </div>
 
-                    {% for image in images %}
-                    {% if category.name == image.category.name %}
+                    <!-- {% for image in images %}
+                    {% if category.name == image.category.name %} -->
+                
                     
                     <!-- <div class="col-md-2">
                         </div> -->
-                        <div >
-                <!-- <h1 style="color: #fff;">{{image.category.name}}</h1> -->
+                        <!-- <div>
+                
 
                                 <div class="col-sm-6 col-md-8" id="polaroid" >
                                         <img src="{{image.image.url}}" class="img-fluid" class="img-responsive" id="gallery" class="btn"
-                                        data-target="#{{image.id}}" data-toggle="modal">
+                                        alt="Image" height="300vh" width="100" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                         <div class="bottom-right">
                                             <h2 style="color: white;" style="text-align: center;">{{image.name}}</h2>
                                             <button class="btn" onclick="copyToClipboard('127.0.0.1:8000{{image.image.url}}')">copy
@@ -61,19 +92,25 @@
             </div>
         </div>
         {% endfor %}
-    </div>
+    </div> -->
 
     <script>
-            function copyToClipboard (str) {
-                const el = document.createElement('textarea');
-                el.value = str;
-                document.body.appendChild(el);
-                el.select();
-                document.execCommand('copy');
-                document.body.removeChild(el);
-            };
+          
             var gallery = new SimpleLightbox('#polaroid img');
+
+            function myFunction() {
+             var copyText = document.getElementById("image_link");
+  
+             copyText.select();
+                copyText.setSelectionRange(0, 99999);
+  
+            navigator.clipboard.writeText(copyText.value);
+    
+    /* Alert the copied link */
+    alert("Copied the link: " + copyText.value);
+  }
         </script>
+
 
 <style>
         body {
@@ -83,11 +120,13 @@
 
        
 
-        #polaroid {
-            /* padding-top: 1%;
-            margin: 1%;
-            border: solid 1px grey; */
+        /* #polaroid {
+       
             display: flex; 
+            width: 550px;
+            height: auto;
+            padding: 10px;
+            padding-right: 0px;
         }
         #polaroid img{
             object-position: center;
@@ -95,12 +134,22 @@
             height: 300px;
             width: 2500rem;
             display: inline-block;
-        }
+        } */
         .bottom-right {
             position: absolute;
             bottom: 8px;
             right: 16px;
-}
+        }
+        .modal-content{
+            background: rgba( 70, 65, 191, 0.25 );
+            box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+            backdrop-filter: blur( 4px );
+            -webkit-backdrop-filter: blur( 4px );
+            border-radius: 10px;
+            border: 1px solid rgba( 255, 255, 255, 0.18 );
+
+        }
+
 
         
     </style>
